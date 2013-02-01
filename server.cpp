@@ -122,10 +122,6 @@ int response(char* query, const char** list , int *num){
    		list[1] = l[1].c_str();
 		return LOGIN;   				  
 	}
-	if(cmd.compare("MARK")){
-		if(count != 0) return -1;
-		return LOGIN;   		
-	}
 	if(cmd.compare("MARK")==0){
 		if(count != 0) return -1;
 		return MARK;   		
@@ -160,7 +156,7 @@ void* ResponseFunc(char* query,char* resp) //copy the response string into resp
 	const char** list;
 	list=new const char*[3];
 	int num;
-	switch(response("MARK",list,&num))
+	switch(response(query,list,&num))
 	{
 		case LOGIN:
 			strcpy(resp,"LOGIN1");
